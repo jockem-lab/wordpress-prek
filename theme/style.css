@@ -9,15 +9,32 @@ Text Domain: prek
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap');
 
+/* ══════════════════════════════════════
+   KUNDANPASSNING – ändra bara här
+   ══════════════════════════════════════ */
+
+:root {
+  --accent:        #c85a1a;
+  --accent-dark:   #a84810;
+  --text-dark:     #1a1a1a;
+  --text-mid:      #555;
+  --text-light:    #888;
+  --bg-light:      #f8f7f4;
+  --bg-dark:       #111;
+  --bg-form:       #1a1a1a;
+  --font-heading:  'Playfair Display', Georgia, serif;
+  --font-body:     'Inter', sans-serif;
+}
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; font-weight: 300; color: #1a1a1a; background: #fff; }
+body { font-family: var(--font-body); font-weight: 300; color: var(--text-dark); background: #fff; }
 img { max-width: 100%; height: auto; display: block; }
 /* ── Typografi ── */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap');
 
 h1, h2, h3, h4 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -45,7 +62,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 .site-branding img { height: 40px; width: auto; }
 
@@ -64,7 +81,7 @@ h1, h2, h3, h4 {
   color: #444;
   transition: color 0.2s;
 }
-.main-navigation a:hover { color: #c85a1a; }
+.main-navigation a:hover { color: var(--accent); }
 
 /* Hamburger */
 .menu-toggle {
@@ -80,7 +97,7 @@ h1, h2, h3, h4 {
   display: block;
   width: 24px;
   height: 2px;
-  background: #1a1a1a;
+  background: var(--text-dark);
   transition: all 0.3s ease;
 }
 .menu-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -131,7 +148,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 20px;
   display: block;
 }
@@ -161,7 +178,7 @@ h1, h2, h3, h4 {
 
 /* ── Footer ── */
 .site-footer {
-  background: #111;
+  background: var(--bg-dark);
   color: rgba(255,255,255,0.6);
   font-size: 14px;
 }
@@ -174,7 +191,7 @@ h1, h2, h3, h4 {
   gap: 48px;
 }
 .footer-logo {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 22px;
   color: #fff;
   margin-bottom: 8px;
@@ -184,12 +201,12 @@ h1, h2, h3, h4 {
   font-size: 13px;
 }
 .footer-col h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 16px;
 }
 .footer-col ul {
@@ -205,7 +222,7 @@ h1, h2, h3, h4 {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-col a:hover { color: #c85a1a; }
+.footer-col a:hover { color: var(--accent); }
 .footer-col p {
   margin-bottom: 8px;
   color: rgba(255,255,255,0.5);
@@ -235,7 +252,7 @@ h1, h2, h3, h4 {
 .btn-primary,
 a.btn-primary {
   display: inline-block;
-  background: #c85a1a;
+  background: var(--accent);
   color: #fff !important;
   padding: 14px 32px;
   border-radius: 4px;
@@ -247,7 +264,7 @@ a.btn-primary {
   transition: background 0.2s;
 }
 .btn-primary:hover,
-a.btn-primary:hover { background: #a84810; }
+a.btn-primary:hover { background: var(--accent-dark); }
 
 .btn-secondary,
 a.btn-secondary {
@@ -269,7 +286,7 @@ a.btn-secondary:hover { border-color: #fff; }
 
 /* ── Objektgrid ── */
 .objekt-sektion {
-  background: #f8f7f4;
+  background: var(--bg-light);
   padding: 80px 24px;
 }
 .objekt-inner {
@@ -279,7 +296,7 @@ a.btn-secondary:hover { border-color: #fff; }
 .objekt-inner h2 {
   font-size: 36px;
   margin-bottom: 40px;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 .objekt-grid {
   display: grid;
@@ -317,13 +334,13 @@ a.btn-secondary:hover { border-color: #fff; }
 .objekt-adress {
   font-size: 15px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 6px;
 }
 .objekt-pris {
   font-size: 16px;
   font-weight: 500;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 10px;
 }
 .objekt-meta {
@@ -358,12 +375,12 @@ a.btn-secondary:hover { border-color: #fff; }
 .objekt-detalj-huvud h1 {
   font-size: clamp(28px, 4vw, 48px);
   margin-bottom: 12px;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 .objekt-detalj-pris {
   font-size: 24px;
   font-weight: 500;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 32px;
 }
 .objekt-detalj-fakta {
@@ -372,7 +389,7 @@ a.btn-secondary:hover { border-color: #fff; }
   flex-wrap: wrap;
 }
 .fakta-kort {
-  background: #f8f7f4;
+  background: var(--accent);
   border-radius: 8px;
   padding: 16px 24px;
   display: flex;
@@ -390,10 +407,10 @@ a.btn-secondary:hover { border-color: #fff; }
 .fakta-värde {
   font-size: 20px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 .objekt-detalj-kontakt {
-  background: #f8f7f4;
+  background: var(--accent);
   border-radius: 12px;
   padding: 32px;
   align-self: start;
@@ -401,7 +418,7 @@ a.btn-secondary:hover { border-color: #fff; }
 .objekt-detalj-kontakt h3 {
   font-size: 22px;
   margin-bottom: 12px;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 .objekt-detalj-kontakt p {
   font-size: 14px;
@@ -433,13 +450,13 @@ a.btn-secondary:hover { border-color: #fff; }
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 16px;
 }
 .om-oss-text h2 {
   font-size: clamp(28px, 4vw, 44px);
   margin-bottom: 24px;
-  color: #1a1a1a;
+  color: var(--text-dark);
   line-height: 1.2;
 }
 .om-oss-text p {
@@ -453,18 +470,18 @@ a.btn-secondary:hover { border-color: #fff; }
   display: inline-block;
   margin-top: 8px;
   padding: 12px 28px;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--text-dark);
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--text-dark);
   transition: background 0.2s, color 0.2s;
 }
 .btn-outline:hover {
-  background: #1a1a1a;
+  background: var(--text-dark);
   color: #fff;
 }
 .om-oss-bild {
@@ -486,7 +503,7 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 /* ── Boka möte ── */
 .boka-sektion {
-  background: #1a1a1a;
+  background: var(--text-dark);
   padding: 96px 24px;
 }
 .boka-inner {
@@ -502,7 +519,7 @@ a.btn-secondary:hover { border-color: #fff; }
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #c85a1a;
+  color: var(--accent);
   margin-bottom: 16px;
 }
 .boka-text h2 {
@@ -535,7 +552,7 @@ a.btn-secondary:hover { border-color: #fff; }
   border-radius: 4px;
   font-size: 14px;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   transition: border-color 0.2s;
 }
 .boka-form input::placeholder { color: rgba(255,255,255,0.35); }
@@ -582,8 +599,8 @@ a.btn-secondary:hover { border-color: #fff; }
   padding: 5px 10px;
   border-radius: 3px;
 }
-.objekt-status--kommande   { background: #1a1a1a; color: #fff; }
-.objekt-status--till-salu  { background: #c85a1a; color: #fff; }
+.objekt-status--kommande   { background: var(--text-dark); color: #fff; }
+.objekt-status--till-salu  { background: var(--accent); color: #fff; }
 .objekt-status--visning    { background: #2563eb; color: #fff; }
 .objekt-status--budgivning { background: #7c3aed; color: #fff; }
 .objekt-status--sald       { background: #16a34a; color: #fff; }
