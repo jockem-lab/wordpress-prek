@@ -79,6 +79,26 @@ function prek_objekt_metabox_html( $post ) {
     <input type="text" name="adress" value="<?php echo esc_attr( $adress ); ?>" style="width:100%">
   </p>
   <p>
+  <label>Status</label><br>
+  <select name="status" style="width:100%">
+    <?php
+    $status = get_post_meta( $post->ID, 'status', true );
+    $alternativ = array(
+      ''          => '— Välj status —',
+      'kommande'  => 'Kommande',
+      'till-salu' => 'Till salu',
+      'visning'   => 'Bokad visning',
+      'budgivning'=> 'Budgivning pågår',
+      'sald'      => 'Såld',
+      'avpublicerad' => 'Avpublicerad',
+    );
+    foreach ( $alternativ as $värde => $label ) {
+      echo '<option value="' . esc_attr( $värde ) . '"' . selected( $status, $värde, false ) . '>' . esc_html( $label ) . '</option>';
+    }
+    ?>
+  </select>
+</p>
+  <p>
     <label>Pris (kr)</label><br>
     <input type="text" name="pris" value="<?php echo esc_attr( $pris ); ?>" style="width:100%">
   </p>
@@ -98,5 +118,6 @@ function prek_spara_objekt_meta( $post_id ) {
   if ( isset( $_POST['adress'] ) )  update_post_meta( $post_id, 'adress',  sanitize_text_field( $_POST['adress'] ) );
   if ( isset( $_POST['rum'] ) )     update_post_meta( $post_id, 'rum',     sanitize_text_field( $_POST['rum'] ) );
   if ( isset( $_POST['storlek'] ) ) update_post_meta( $post_id, 'storlek', sanitize_text_field( $_POST['storlek'] ) );
+  if ( isset( $_POST['status'] ) ) update_post_meta( $post_id, 'status', sanitize_text_field( $_POST['status'] ) );
 }
 add_action( 'save_post', 'prek_spara_objekt_meta' );
