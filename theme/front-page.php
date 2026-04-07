@@ -2,7 +2,7 @@
 
 <main id="primary" class="site-main">
 
-	<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80');">
+	<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80');">
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <p class="hero-eyebrow">Mäklare i Linköping sedan 2001</p>
@@ -34,6 +34,30 @@
       <article class="objekt-kort">
         <a href="<?php the_permalink(); ?>" class="objekt-kort-inner">
           <div class="objekt-bild">
+            <div class="objekt-bild">
+  <?php
+  $obj_status = get_post_meta( get_the_ID(), 'status', true );
+  if ( $obj_status ) : ?>
+    <span class="objekt-status objekt-status--<?php echo esc_attr( $obj_status ); ?>">
+      <?php
+      $status_labels = array(
+        'kommande'   => 'Kommande',
+        'till-salu'  => 'Till salu',
+        'visning'    => 'Bokad visning',
+        'budgivning' => 'Budgivning pågår',
+        'sald'       => 'Såld',
+        'avpublicerad' => 'Avpublicerad',
+      );
+      echo esc_html( $status_labels[ $obj_status ] ?? $obj_status );
+      ?>
+    </span>
+  <?php endif; ?>
+  <?php if ( has_post_thumbnail() ) : ?>
+    <?php the_post_thumbnail( 'large' ); ?>
+  <?php else : ?>
+    <div class="objekt-bild-placeholder"></div>
+  <?php endif; ?>
+</div>
             <?php if ( has_post_thumbnail() ) : ?>
               <?php the_post_thumbnail( 'large' ); ?>
             <?php else : ?>

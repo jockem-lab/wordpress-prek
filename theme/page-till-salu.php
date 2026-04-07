@@ -59,32 +59,34 @@ get_header(); ?>
             );
         ?>
         <article class="objekt-kort"
-          data-status="<?php echo esc_attr( $status ); ?>"
-          data-rum="<?php echo esc_attr( $rum ); ?>"
-          data-storlek="<?php echo esc_attr( $storlek ); ?>">
-          <a href="<?php the_permalink(); ?>" class="objekt-kort-inner">
-            <div class="objekt-bild">
-              <?php if ( $status ) : ?>
-                <span class="objekt-status objekt-status--<?php echo esc_attr( $status ); ?>">
-                  <?php echo esc_html( $status_labels[ $status ] ?? $status ); ?>
-                </span>
-              <?php endif; ?>
-              <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail( 'large' ); ?>
-              <?php else : ?>
-                <div class="objekt-bild-placeholder"></div>
-              <?php endif; ?>
-            </div>
-            <div class="objekt-info">
-              <p class="objekt-adress"><?php echo esc_html( $adress ?: get_the_title() ); ?></p>
-              <p class="objekt-pris"><?php echo esc_html( $pris ); ?></p>
-              <div class="objekt-meta">
-                <?php if ( $rum ) : ?><span><?php echo esc_html( $rum ); ?> rum</span><?php endif; ?>
-                <?php if ( $storlek ) : ?><span><?php echo esc_html( $storlek ); ?> kvm</span><?php endif; ?>
-              </div>
-            </div>
-          </a>
-        </article>
+  data-status="<?php echo esc_attr( $status ); ?>"
+  data-rum="<?php echo esc_attr( $rum ); ?>"
+  data-storlek="<?php echo esc_attr( $storlek ); ?>">
+  <a href="<?php the_permalink(); ?>" class="objekt-kort-inner">
+    <div class="objekt-bild">
+      <?php if ( has_post_thumbnail() ) : ?>
+        <?php the_post_thumbnail( 'large' ); ?>
+      <?php else : ?>
+        <div class="objekt-bild-placeholder"></div>
+      <?php endif; ?>
+      <div class="objekt-overlay">
+        <?php if ( $status ) : ?>
+          <span class="objekt-status objekt-status--<?php echo esc_attr( $status ); ?>">
+            <?php echo esc_html( $status_labels[ $status ] ?? $status ); ?>
+          </span>
+        <?php endif; ?>
+        <div class="objekt-info">
+          <p class="objekt-adress"><?php echo esc_html( $adress ?: get_the_title() ); ?></p>
+          <p class="objekt-pris"><?php echo esc_html( $pris ); ?></p>
+          <div class="objekt-meta">
+            <?php if ( $rum ) : ?><span><?php echo esc_html( $rum ); ?> rum</span><?php endif; ?>
+            <?php if ( $storlek ) : ?><span><?php echo esc_html( $storlek ); ?> kvm</span><?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</article>
         <?php
           endwhile;
           wp_reset_postdata();

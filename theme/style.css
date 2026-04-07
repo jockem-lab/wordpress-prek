@@ -23,16 +23,14 @@ Text Domain: prek
   --bg-dark:       #111;
   --bg-form:       #1a1a1a;
   --font-heading:  'Playfair Display', Georgia, serif;
+  --font-serif:    'Playfair Display', Georgia, serif;
   --font-body:     'Inter', sans-serif;
 }
-
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-body); font-weight: 300; color: var(--text-dark); background: #fff; }
 img { max-width: 100%; height: auto; display: block; }
 /* ── Typografi ── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap');
-
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 400;
@@ -42,37 +40,42 @@ h1, h2, h3, h4 {
 
 /* ── Header ── */
 .site-header {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 100;
   background: #fff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 64px;
+  padding: 0 80px;
+  height: 72px;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
 }
+.site-branding {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.nav-left  { grid-column: 1; display: flex; gap: 32px; justify-content: flex-start; }
+.nav-right { grid-column: 2; display: flex; gap: 32px; justify-content: flex-end; }
 .site-name {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: var(--font-serif);       /* Playfair Display */
+  font-size: 22px;
+  font-weight: 400;                     /* inte bold – elegantare */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
   color: var(--text-dark);
 }
-.site-branding img { height: 40px; width: auto; }
-
-/* Nav */
-.main-navigation ul {
-  list-style: none;
-  display: flex;
-  gap: 32px;
-}
-.main-navigation a {
+.nav-left  { justify-content: flex-end; }
+.nav-right { justify-content: flex-end; }
+.nav-left a, .nav-right a {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -81,6 +84,7 @@ h1, h2, h3, h4 {
   color: #444;
   transition: color 0.2s;
 }
+.nav-left a:hover, .nav-right a:hover { color: var(--accent); }
 .main-navigation a:hover { color: var(--accent); }
 
 /* Hamburger */
@@ -153,7 +157,7 @@ h1, h2, h3, h4 {
   display: block;
 }
 .hero h1 {
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(36px, 4vw, 60px);
   font-weight: 400;
   color: #fff;
   margin-bottom: 20px;
@@ -187,6 +191,7 @@ h1, h2, h3, h4 {
   margin: 0 auto;
   padding: 64px 24px;
   display: grid;
+  position: relative;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 48px;
 }
@@ -300,59 +305,104 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 .objekt-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);   /* ← fast 3 kolumner */
+  gap: 0;
 }
-.objekt-kort-inner {
+
+.objekt-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;        /* ← centrera horisontellt */
+  padding: 32px 24px;
+  z-index: 1;
+  text-align: center;         /* ← centrera text */
+}
+ .objekt-kort-inner {
   display: block;
   text-decoration: none;
   color: inherit;
-  background: #fff;
-  border-radius: 8px;
+  border-radius: 0;    /* ← var: 4px */
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  transition: transform 0.3s ease;
 }
 .objekt-kort-inner:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
 }
-.objekt-bild { overflow: hidden; height: 220px; }
-.objekt-bild { position: relative; overflow: hidden; height: 220px; }
+.objekt-bild {
+  position: relative;
+  overflow: hidden;
+  height: 520px;        /* högre än tidigare 220px */
+}
 .objekt-bild img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
 }
-.objekt-kort-inner:hover .objekt-bild img { transform: scale(1.05); }
+.objekt-kort-inner:hover .objekt-bild img { transform: scale(1.04); }
 .objekt-bild-placeholder {
   width: 100%;
   height: 100%;
   background: #e8e6e1;
 }
-.objekt-info { padding: 20px; }
+
+/* overlay-gradient */
+.objekt-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  z-index: 1;
+}
+
+/* ta bort den gamla ::after-gradienten */
+.objekt-bild::after { display: none; }
+
+.objekt-info {
+  /* ingen position:absolute här längre – hanteras av overlay */
+}
 .objekt-adress {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 6px;
+  color: #ffffff;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+.objekt-adress {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
 }
 .objekt-pris {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--accent);
-  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 8px;
 }
 .objekt-meta {
   display: flex;
   gap: 16px;
-  font-size: 13px;
-  color: #888;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+  text-transform:uppercase;
 }
 .objekt-tomma {
   color: #888;
   font-size: 15px;
 }
+
 /* ── Objektdetaljsida ── */
 .objekt-detalj-hero {
   width: 100%;
@@ -369,6 +419,7 @@ a.btn-secondary:hover { border-color: #fff; }
   margin: 0 auto;
   padding: 48px 24px;
   display: grid;
+  position: relative;
   grid-template-columns: 1fr 340px;
   gap: 64px;
 }
@@ -402,27 +453,28 @@ a.btn-secondary:hover { border-color: #fff; }
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #888;
+   color: rgba(255,255,255,0.75);  
 }
 .fakta-värde {
   font-size: 20px;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #ffffff;
 }
 .objekt-detalj-kontakt {
   background: var(--accent);
   border-radius: 12px;
   padding: 32px;
   align-self: start;
+  color: #ffffff;    
 }
 .objekt-detalj-kontakt h3 {
   font-size: 22px;
   margin-bottom: 12px;
-  color: var(--text-dark);
+  color: #ffffff;    
 }
 .objekt-detalj-kontakt p {
   font-size: 14px;
-  color: #666;
+  color: rgba(255,255,255,0.85); ;
   line-height: 1.6;
   margin-bottom: 24px;
 }
@@ -441,6 +493,7 @@ a.btn-secondary:hover { border-color: #fff; }
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
+  position: relative;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
@@ -510,6 +563,7 @@ a.btn-secondary:hover { border-color: #fff; }
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
+  position: relative;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
@@ -541,6 +595,7 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 .boka-form-rad {
   display: grid;
+  position: relative;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
@@ -661,6 +716,22 @@ a.btn-secondary:hover { border-color: #fff; }
   margin-top: 32px;
   font-size: 13px;
   color: var(--text-light);
+}
+.objekt-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  z-index: 1;
+}
+
+.objekt-status {
+  position: absolute;
+  top: 16px;
+  left: 16px;
 }
 @media (max-width: 768px) {
   .objekt-filter { flex-direction: column; align-items: flex-start; }

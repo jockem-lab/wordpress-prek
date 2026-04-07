@@ -16,6 +16,12 @@
 <div id="page" class="site">
   <header id="masthead" class="site-header">
     <div class="header-inner">
+
+      <nav class="nav-left">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Hem</a>
+        <a href="<?php echo esc_url( home_url( '/till-salu' ) ); ?>">Till salu</a>
+      </nav>
+
       <div class="site-branding">
         <?php if ( has_custom_logo() ) : ?>
           <?php the_custom_logo(); ?>
@@ -25,12 +31,16 @@
           </a>
         <?php endif; ?>
       </div>
+
+      <nav class="nav-right">
+        <a href="<?php echo esc_url( home_url( '/om-oss' ) ); ?>">Om oss</a>
+        <a href="<?php echo esc_url( home_url( '/kontakt' ) ); ?>">Kontakt</a>
+      </nav>
+
       <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav id="site-navigation" class="main-navigation">
-        <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu', 'container' => false ) ); ?>
-      </nav>
+
     </div>
   </header>
   <div id="content" class="site-content">
