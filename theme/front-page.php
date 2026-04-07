@@ -112,7 +112,7 @@
       <a href="/om-oss" class="btn-outline">Läs mer om oss</a>
     </div>
     <div class="om-oss-bild">
-      <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&q=80" alt="Vårt team">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Vårt team">
     </div>
   </div>
 </section>
