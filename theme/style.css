@@ -307,7 +307,7 @@ a.btn-secondary:hover { border-color: #fff; }
   display: grid;
   position: relative;
   grid-template-columns: repeat(3, 1fr);   /* ← fast 3 kolumner */
-  gap: 0;
+  gap: 8px;
 }
 
 .objekt-overlay {

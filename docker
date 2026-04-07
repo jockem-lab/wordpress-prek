@@ -1,0 +1,35 @@
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpressID	post_title
+26	Strandgatan 7
+25	Björkvägen 4
+5	Storgatan 12
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpressID	post_title	post_name	post_date	post_status
+26	Strandgatan 7	strandgatan-7	2026-04-07 19:09:05	publish
+25	Björkvägen 4	bjorkvagen-4	2026-04-07 19:07:58	publish
+5	Storgatan 12	storgatan-12	2026-04-02 13:11:34	publish
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpressID	post_title	post_name	post_date	post_status
+26	Strandgatan 7	strandgatan-7	2026-04-07 19:09:05	publish
+25	Björkvägen 4	bjorkvagen-4	2026-04-07 19:07:58	publish
+5	Storgatan 12	storgatan-12	2026-04-02 13:11:34	publish
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress309:  grid-template-columns: repeat(3, 1fr);   /* ← fast 3 kolumner */
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress306:.objekt-grid {
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress65:.nav-left  { grid-column: 1; display: flex; gap: 32px; justify-content: flex-start; }
+66:.nav-right { grid-column: 2; display: flex; gap: 32px; justify-content: flex-end; }
+193:  display: grid;
+195:  grid-template-columns: 2fr 1fr 1fr;
+246:    grid-template-columns: 1fr;
+292:/* ── Objektgrid ── */
+306:.objekt-grid {
+307:  display: grid;
+309:  grid-template-columns: repeat(3, 1fr);
+421:  display: grid;
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress   16018 /Users/johanmalm/Downloads/prek-wordpress/theme/style.css
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress   16018 /Users/johanmalm/Downloads/prek-wordpress/theme/style.css
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress16018 /var/www/html/wp-content/themes/prek/style.css
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress   16018 theme/style.css
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress   16046 theme/style.css
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress77fcc18 Förbättrad header, hero och objektkort
+13a3bfb Sökfilter på Till salu-sidan
+ecdf863 CSS-variabler för enkel kundanpassning av färgschema
+e63d339 Lägg till Till salu-sida, objektstatus och boka möte-sektion
+86881d6 Lägg till .gitignore, ta bort DS_Store och uploads
+]7;file://MacBook-Air-som-tillhor-Johan.local/Users/johanmalm/Downloads/prek-wordpress
