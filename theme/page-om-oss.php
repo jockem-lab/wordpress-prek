@@ -29,7 +29,13 @@ $hero_style = $hero_bild
 <main id="primary" class="site-main">
 
   <!-- Hero -->
-  <div class="om-hero" style="<?php echo $hero_style; ?>">
+  <div class="om-hero page-slideshow">
+      <div class="page-slides">
+        <div class="page-slide active" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80')"></div>
+      </div>">
     <div class="om-hero-overlay"></div>
     <div class="om-hero-inner">
 <h1><?php echo esc_html($hero_rubrik); ?></h1>

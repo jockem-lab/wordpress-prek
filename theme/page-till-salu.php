@@ -6,7 +6,13 @@ get_header(); ?>
 
 <main id="primary" class="site-main">
 
-  <div class="till-salu-hero" style="background-image: url('<?php echo esc_url( home_url( '/wp-content/uploads/2026/04/Optimal-storlek-max-2-scaled.jpg' ) ); ?>');">
+  <div class="till-salu-hero page-slideshow">
+      <div class="page-slides">
+        <div class="page-slide active" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80')"></div>
+        <div class="page-slide" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80')"></div>
+      </div>');">
     <div class="till-salu-hero-overlay"></div>
     <div class="till-salu-hero-inner">
       <h1>Hem till salu</h1>
