@@ -661,12 +661,12 @@ a.btn-secondary:hover { border-color: #fff; }
   padding: 5px 10px;
   border-radius: 3px;
 }
-.objekt-status--kommande   { background: rgba(0,0,0,0.55); color: #fff; }
+.objekt-status--kommande   { background: #5a5a5a; color: #fff; }
 .objekt-status--till-salu  { background: var(--accent); color: #fff; }
 .objekt-status--visning    { background: var(--text-dark); color: #fff; }
 .objekt-status--budgivning { background: var(--text-dark); color: #fff; }
-.objekt-status--sald       { background: rgba(0,0,0,0.55); color: #fff; }
-.objekt-status--avpublicerad { background: rgba(0,0,0,0.35); color: #fff; }
+.objekt-status--sald       { background: #5a5a5a; color: #fff; }
+.objekt-status--avpublicerad { background: #888; color: #fff; }
 
 /* ── Filter ── */
 .objekt-filter {
