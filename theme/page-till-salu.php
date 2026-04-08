@@ -6,9 +6,8 @@ get_header(); ?>
 
 <main id="primary" class="site-main">
 
-  <div class="till-salu-hero">
+  <div class="till-salu-hero" style="background-image: url('<?php echo esc_url( home_url( '/wp-content/uploads/2026/04/Optimal-storlek-max-2-scaled.jpg' ) ); ?>');">
     <div class="till-salu-hero-inner">
-      <p class="till-salu-eyebrow">Vårt utbud</p>
       <h1>Hem till salu</h1>
     </div>
   </div>
