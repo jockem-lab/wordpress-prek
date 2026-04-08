@@ -680,14 +680,14 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 .filter-tab {
   background: none;
-  border: 1px solid var(--text-light);
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--text-mid);
   cursor: pointer;
   transition: all 0.2s;
   font-family: var(--font-body);
@@ -706,14 +706,20 @@ a.btn-secondary:hover { border-color: #fff; }
   gap: 12px;
 }
 .filter-val select {
-  padding: 8px 16px;
-  border: 1px solid var(--text-light);
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 10px 20px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   color: var(--text-dark);
   background: #fff;
   cursor: pointer;
   font-family: var(--font-body);
+  appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23333' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
 }
 .objekt-antal {
   margin-top: 32px;
