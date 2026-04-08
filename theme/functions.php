@@ -260,3 +260,13 @@ add_action('acf/init', function() {
     ),
   ));
 });
+
+// FasAD Bridge sync endpoint
+add_action('init', function() {
+    add_rewrite_rule('^_sync/?$', 'index.php?pagename=_sync', 'top');
+});
+add_action('template_redirect', function() {
+    if (get_query_var('pagename') === '_sync') {
+        // låt FasAD Bridge hantera detta
+    }
+});

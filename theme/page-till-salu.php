@@ -46,24 +46,50 @@ get_header(); ?>
       <div class="objekt-grid" id="objekt-grid">
         <?php
         $objekt = new WP_Query( array(
-          'post_type'      => 'objekt',
+          'post_type'      => 'fasad_listing',
           'posts_per_page' => 50,
           'post_status'    => 'publish',
+          'meta_query'     => array(
+            array(
+              'key'   => '_fasad_archived',
+              'value' => '0',
+            ),
+          ),
         ) );
         if ( $objekt->have_posts() ) :
           while ( $objekt->have_posts() ) : $objekt->the_post();
-            $pris    = get_post_meta( get_the_ID(), 'pris', true );
-            $adress  = get_post_meta( get_the_ID(), 'adress', true );
-            $rum     = get_post_meta( get_the_ID(), 'rum', true );
-            $storlek = get_post_meta( get_the_ID(), 'storlek', true );
-            $status  = get_post_meta( get_the_ID(), 'status', true );
+            $location = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_location', true ) );
+            $economy  = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_economy', true ) );
+            $size     = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_size', true ) );
+            $images   = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_images', true ) );
+            $sold     = get_post_meta( get_the_ID(), '_fasad_sold', true );
+            $archived = get_post_meta( get_the_ID(), '_fasad_archived', true );
+
+            $adress  = isset($location->address) ? $location->address . ', ' . $location->city : get_the_title();
+            $pris    = isset($economy->price->primary->amount) ? number_format($economy->price->primary->amount, 0, ',', ' ') . ' kr' : '';
+            $rum     = isset($size->rooms) ? $size->rooms : '';
+            $storlek = '';
+            if ( isset($size->area->areas) ) {
+              foreach ( $size->area->areas as $area ) {
+                if ( $area->type === 'Boarea' ) {
+                  $storlek = $area->size;
+                  break;
+                }
+              }
+            }
+            $bild_url = '';
+            if ( isset($images[0]->variants) ) {
+              foreach ( $images[0]->variants as $variant ) {
+                if ( $variant->type === 'large' ) {
+                  $bild_url = $variant->path;
+                  break;
+                }
+              }
+            }
+            $status = $sold ? 'sald' : 'till-salu';
             $status_labels = array(
-              'kommande'     => 'Kommande',
-              'till-salu'    => 'Till salu',
-              'visning'      => 'Bokad visning',
-              'budgivning'   => 'Budgivning pågår',
-              'sald'         => 'Såld',
-              'avpublicerad' => 'Avpublicerad',
+              'till-salu' => 'Till salu',
+              'sald'      => 'Såld',
             );
         ?>
         <article class="objekt-kort"
@@ -72,8 +98,8 @@ get_header(); ?>
   data-storlek="<?php echo esc_attr( $storlek ); ?>">
   <a href="<?php the_permalink(); ?>" class="objekt-kort-inner">
     <div class="objekt-bild">
-      <?php if ( has_post_thumbnail() ) : ?>
-        <?php the_post_thumbnail( 'large' ); ?>
+      <?php if ( $bild_url ) : ?>
+        <img src="<?php echo esc_url($bild_url); ?>" alt="<?php echo esc_attr($adress); ?>">
       <?php else : ?>
         <div class="objekt-bild-placeholder"></div>
       <?php endif; ?>
