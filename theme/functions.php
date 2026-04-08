@@ -21,19 +21,7 @@ add_action( 'wp_enqueue_scripts', 'prek_scripts' );
 
 // Registrera Custom Post Type: Objekt
 function prek_register_objekt() {
-  register_post_type( 'objekt', array(
-    'labels' => array(
-      'name'          => 'Objekt',
-      'singular_name' => 'Objekt',
-      'add_new_item'  => 'Lägg till objekt',
-      'edit_item'     => 'Redigera objekt',
-    ),
-    'public'       => true,
-    'has_archive'  => true,
-    'supports'     => array( 'title', 'thumbnail' ),
-    'menu_icon'    => 'dashicons-building',
-    'show_in_rest' => true,
-  ) );
+  // Avaktiverad - FasAD Bridge registrerar fasad_listing med slug 'objekt'
 }
 add_action( 'init', 'prek_register_objekt' );
 
@@ -270,3 +258,47 @@ add_action('template_redirect', function() {
         // låt FasAD Bridge hantera detta
     }
 });
+
+// Använd single-fasad_listing.php för fasad_listing post type
+add_filter('template_include', function($template) {
+    error_log('TEMPLATE_INCLUDE: ' . $template . ' | post_type: ' . get_post_type() . ' | is_singular: ' . (is_singular('fasad_listing') ? 'yes' : 'no'));
+    if (is_singular('fasad_listing')) {
+        $custom = locate_template('single-fasad_listing.php');
+        if ($custom) return $custom;
+    }
+    return $template;
+}, 99);
+
+// Förhindra felaktig 404 för fasad_listing
+add_action('wp', function() {
+    global $wp_query;
+    if (isset($wp_query->query['fasad_listing'])) {
+        $slug = $wp_query->query['fasad_listing'];
+        $post = get_page_by_path($slug, OBJECT, 'fasad_listing');
+        if ($post && $post->post_status === 'publish') {
+            $wp_query->is_404 = false;
+            $wp_query->is_single = true;
+            $wp_query->is_singular = true;
+            $wp_query->post = $post;
+            $wp_query->posts = [$post];
+            $wp_query->post_count = 1;
+            $wp_query->queried_object = $post;
+            $wp_query->queried_object_id = $post->ID;
+            status_header(200);
+            setup_postdata($post);
+        }
+    }
+}, 1);
+
+// Säkerställ 200 på template_redirect efter FasAD Bridge
+add_action('template_redirect', function() {
+    global $wp_query;
+    if (isset($wp_query->query['fasad_listing']) && $wp_query->is_404) {
+        $slug = $wp_query->query['fasad_listing'];
+        $post = get_page_by_path($slug, OBJECT, 'fasad_listing');
+        if ($post && $post->post_status === 'publish') {
+            $wp_query->is_404 = false;
+            status_header(200);
+        }
+    }
+}, 999);
