@@ -86,10 +86,20 @@ get_header(); ?>
                 }
               }
             }
-            $status = $sold ? 'sald' : 'till-salu';
+            $has      = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_has', true ) );
+            $biddings = isset($has->biddings) && $has->biddings;
+
+            if ( $sold ) {
+              $status = 'sald';
+            } elseif ( $biddings ) {
+              $status = 'budgivning';
+            } else {
+              $status = 'till-salu';
+            }
             $status_labels = array(
-              'till-salu' => 'Till salu',
-              'sald'      => 'Såld',
+              'till-salu'  => 'Till salu',
+              'budgivning' => 'Budgivning pågår',
+              'sald'       => 'Såld',
             );
         ?>
         <article class="objekt-kort"
