@@ -5,6 +5,14 @@
 get_header(); ?>
 
 <main id="primary" class="site-main">
+
+  <div class="till-salu-hero">
+    <div class="till-salu-hero-inner">
+      <p class="till-salu-eyebrow">Vårt utbud</p>
+      <h1>Hem till salu</h1>
+    </div>
+  </div>
+
   <section class="objekt-sektion">
     <div class="objekt-inner">
 

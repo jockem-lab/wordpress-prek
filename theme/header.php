@@ -19,7 +19,7 @@
 
       <nav class="nav-left">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Hem</a>
-        <a href="<?php echo esc_url( home_url( '/till-salu' ) ); ?>">Till salu</a>
+        <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'till-salu' ) ) ); ?>">Till salu</a>
       </nav>
 
       <div class="site-branding">
@@ -33,8 +33,8 @@
       </div>
 
       <nav class="nav-right">
-        <a href="<?php echo esc_url( home_url( '/om-oss' ) ); ?>">Om oss</a>
-        <a href="<?php echo esc_url( home_url( '/kontakt' ) ); ?>">Kontakt</a>
+        <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'om-oss' ) ) ); ?>">Om oss</a>
+        <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'kontakt' ) ) ); ?>">Kontakt</a>
       </nav>
 
       <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">

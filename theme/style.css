@@ -152,7 +152,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #fff;
   margin-bottom: 20px;
   display: block;
 }
@@ -852,4 +852,29 @@ a.btn-secondary:hover { border-color: #fff; }
 .objekt-detalj-status.objekt-status--kommande {
   background: rgba(0,0,0,0.5);
   color: #fff;
+}
+
+/* ── Till salu hero ── */
+.till-salu-hero {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 64px 40px 48px;
+}
+.till-salu-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.till-salu-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.till-salu-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  color: var(--text-dark);
 }
