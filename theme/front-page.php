@@ -26,56 +26,74 @@
     <div class="objekt-grid">
       <?php
       $objekt = new WP_Query( array(
-        'post_type'      => 'objekt',
+        'post_type'      => 'fasad_listing',
         'posts_per_page' => 6,
         'post_status'    => 'publish',
+        'meta_query'     => array(
+          array(
+            'key'     => '_fasad_sold',
+            'value'   => '1',
+            'compare' => '!=',
+          ),
+        ),
       ) );
       if ( $objekt->have_posts() ) :
         while ( $objekt->have_posts() ) : $objekt->the_post();
-          $pris    = get_post_meta( get_the_ID(), 'pris', true );
-          $adress  = get_post_meta( get_the_ID(), 'adress', true );
-          $rum     = get_post_meta( get_the_ID(), 'rum', true );
-          $storlek = get_post_meta( get_the_ID(), 'storlek', true );
+          $location = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_location', true ) );
+          $economy  = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_economy', true ) );
+          $size     = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_size', true ) );
+          $images   = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_images', true ) );
+          $sold     = get_post_meta( get_the_ID(), '_fasad_sold', true );
+          $has      = maybe_unserialize( get_post_meta( get_the_ID(), '_fasad_has', true ) );
+          $biddings = isset($has->biddings) && $has->biddings;
+
+          $adress  = isset($location->address) ? $location->address . ', ' . $location->city : get_the_title();
+          $pris    = isset($economy->price->primary->amount) ? number_format($economy->price->primary->amount, 0, ',', ' ') . ' kr' : '';
+          $rum     = isset($size->rooms) ? $size->rooms : '';
+          $storlek = '';
+          if ( isset($size->area->areas) ) {
+            foreach ( $size->area->areas as $area ) {
+              if ( $area->type === 'Boarea' ) { $storlek = $area->size; break; }
+            }
+          }
+          $bild_url = '';
+          if ( isset($images[0]->variants) ) {
+            foreach ( $images[0]->variants as $variant ) {
+              if ( $variant->type === 'large' ) { $bild_url = $variant->path; break; }
+            }
+          }
+          if ( ! $bild_url ) continue;
+          if ( $sold ) { $status = 'sald'; }
+          elseif ( $biddings ) { $status = 'budgivning'; }
+          else { $status = 'till-salu'; }
+          $status_labels = array(
+            'till-salu'  => 'Till salu',
+            'budgivning' => 'Budgivning pågår',
+            'sald'       => 'Såld',
+          );
       ?>
       <article class="objekt-kort">
         <a href="<?php the_permalink(); ?>" class="objekt-kort-inner">
           <div class="objekt-bild">
-            <div class="objekt-bild">
-  <?php
-  $obj_status = get_post_meta( get_the_ID(), 'status', true );
-  if ( $obj_status ) : ?>
-    <span class="objekt-status objekt-status--<?php echo esc_attr( $obj_status ); ?>">
-      <?php
-      $status_labels = array(
-        'kommande'   => 'Kommande',
-        'till-salu'  => 'Till salu',
-        'visning'    => 'Bokad visning',
-        'budgivning' => 'Budgivning pågår',
-        'sald'       => 'Såld',
-        'avpublicerad' => 'Avpublicerad',
-      );
-      echo esc_html( $status_labels[ $obj_status ] ?? $obj_status );
-      ?>
-    </span>
-  <?php endif; ?>
-  <?php if ( has_post_thumbnail() ) : ?>
-    <?php the_post_thumbnail( 'large' ); ?>
-  <?php else : ?>
-    <div class="objekt-bild-placeholder"></div>
-  <?php endif; ?>
-</div>
-            <?php if ( has_post_thumbnail() ) : ?>
-              <?php the_post_thumbnail( 'large' ); ?>
+            <?php if ( $bild_url ) : ?>
+              <img src="<?php echo esc_url($bild_url); ?>" alt="<?php echo esc_attr($adress); ?>">
             <?php else : ?>
               <div class="objekt-bild-placeholder"></div>
             <?php endif; ?>
-          </div>
-          <div class="objekt-info">
-            <p class="objekt-adress"><?php echo esc_html( $adress ?: get_the_title() ); ?></p>
-            <p class="objekt-pris"><?php echo esc_html( $pris ); ?></p>
-            <div class="objekt-meta">
-              <?php if ( $rum ) : ?><span><?php echo esc_html( $rum ); ?> rum</span><?php endif; ?>
-              <?php if ( $storlek ) : ?><span><?php echo esc_html( $storlek ); ?> kvm</span><?php endif; ?>
+            <div class="objekt-overlay">
+              <?php if ( $status ) : ?>
+                <span class="objekt-status objekt-status--<?php echo esc_attr( $status ); ?>">
+                  <?php echo esc_html( $status_labels[ $status ] ?? $status ); ?>
+                </span>
+              <?php endif; ?>
+              <div class="objekt-info">
+                <p class="objekt-adress"><?php echo esc_html( $adress ?: get_the_title() ); ?></p>
+                <p class="objekt-pris"><?php echo esc_html( $pris ); ?></p>
+                <div class="objekt-meta">
+                  <?php if ( $rum ) : ?><span><?php echo esc_html( $rum ); ?> rum</span><?php endif; ?>
+                  <?php if ( $storlek ) : ?><span><?php echo esc_html( $storlek ); ?> kvm</span><?php endif; ?>
+                </div>
+              </div>
             </div>
           </div>
         </a>

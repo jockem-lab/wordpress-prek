@@ -6,7 +6,7 @@ get_header();
 
 $hero_bild     = get_field('om_hero_bild');
 $hero_rubrik   = get_field('om_hero_rubrik') ?: get_the_title();
-$intro_text    = get_field('om_intro_text');
+$intro_text    = get_field('om_intro_text') ?: '<p>Vi är ett engagerat mäklarteam med djup lokalkännedom och lång erfarenhet av bostadsmarknaden. Vår passion är att hjälpa dig hitta rätt hem – eller sälja ditt nuvarande till bästa möjliga villkor. Vi guidar dig tryggt genom hela processen, från första mötet till nyckelöverlämningen.</p>';
 $fakta_1_tal   = get_field('om_fakta_1_tal') ?: '2001';
 $fakta_1_label = get_field('om_fakta_1_label') ?: 'Grundat';
 $fakta_2_tal   = get_field('om_fakta_2_tal') ?: '500+';
@@ -46,7 +46,7 @@ $hero_style = $hero_bild
   <section class="om-intro">
     <div class="om-intro-inner">
       <div class="om-intro-text">
-        <?php echo wp_kses_post($intro_text); ?>
+        <?php echo $intro_text ? wp_kses_post($intro_text) : ''; ?>
       </div>
       <div class="om-intro-fakta">
         <div class="om-fakta-item">
@@ -73,15 +73,15 @@ $hero_style = $hero_bild
       <div class="om-varden-grid">
         <div class="om-varden-kort">
           <h3><?php echo esc_html($v1_titel); ?></h3>
-          <p><?php echo esc_html($v1_text); ?></p>
+          <?php if($v1_text): ?><p><?php echo esc_html($v1_text); ?></p><?php endif; ?>
         </div>
         <div class="om-varden-kort">
           <h3><?php echo esc_html($v2_titel); ?></h3>
-          <p><?php echo esc_html($v2_text); ?></p>
+          <?php if($v2_text): ?><p><?php echo esc_html($v2_text); ?></p><?php endif; ?>
         </div>
         <div class="om-varden-kort">
           <h3><?php echo esc_html($v3_titel); ?></h3>
-          <p><?php echo esc_html($v3_text); ?></p>
+          <?php if($v3_text): ?><p><?php echo esc_html($v3_text); ?></p><?php endif; ?>
         </div>
       </div>
     </div>
