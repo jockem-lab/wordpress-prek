@@ -865,8 +865,12 @@ a.btn-secondary:hover { border-color: #fff; }
   position: relative;
   background-size: cover;
   background-position: center;
-  padding: 80px 40px;
+  padding: 0;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
 }
 .till-salu-hero-overlay {
   position: absolute;
@@ -889,7 +893,312 @@ a.btn-secondary:hover { border-color: #fff; }
 }
 .till-salu-hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(24px, 2.5vw, 36px);
+  font-size: clamp(32px, 4vw, 56px);
   font-weight: 400;
   color: #ffffff;
+}
+
+/* ── Om oss-sida ── */
+.om-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 120px 40px;
+  text-align: center;
+}
+.om-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+.om-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.om-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+.om-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  color: #fff;
+}
+
+/* Intro */
+.om-intro {
+  padding: 80px 40px;
+  background: #fff;
+}
+.om-intro-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 80px;
+  align-items: center;
+}
+.om-intro-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.om-intro-fakta {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-left: 1px solid rgba(0,0,0,0.08);
+  padding-left: 48px;
+}
+.om-fakta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.om-fakta-tal {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--text-dark);
+}
+.om-fakta-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* Värderingar */
+.om-varden {
+  padding: 80px 40px;
+  background: var(--bg-light);
+}
+.om-varden-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.om-varden-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.om-varden h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 48px;
+}
+.om-varden-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.om-varden-kort {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 24px;
+}
+.om-varden-kort h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.om-varden-kort p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+@media (max-width: 768px) {
+  .om-intro-inner { grid-template-columns: 1fr; }
+  .om-intro-fakta { border-left: none; padding-left: 0; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 32px; flex-direction: row; }
+  .om-varden-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Kontaktsida ── */
+.kontakt-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 120px 40px;
+  text-align: center;
+}
+.kontakt-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+.kontakt-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.kontakt-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+.kontakt-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  color: #fff;
+}
+
+/* Kontakt-sektion */
+.kontakt-sektion {
+  padding: 80px 40px;
+  background: #fff;
+}
+.kontakt-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Info */
+.kontakt-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  padding-right: 80px;
+}
+.kontakt-info-block p:first-child {
+  margin-bottom: 8px;
+}
+.kontakt-info-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.kontakt-info-block p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+.kontakt-info-block a {
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.kontakt-info-block a:hover { color: var(--accent); }
+
+/* Formulär */
+.kontakt-formular h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 32px;
+}
+.kontakt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.kontakt-form-rad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.kontakt-form-grupp {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kontakt-form-grupp label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.kontakt-form input,
+.kontakt-form textarea {
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 0;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: #fff;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.kontakt-form input:focus,
+.kontakt-form textarea:focus {
+  outline: none;
+  border-color: var(--text-dark);
+}
+.kontakt-form textarea { resize: vertical; }
+
+@media (max-width: 768px) {
+  .kontakt-inner { grid-template-columns: 1fr; gap: 48px; }
+  .kontakt-info { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 48px; }
+  .kontakt-form-rad { grid-template-columns: 1fr; }
+}
+
+/* ── Fix till-salu hero spacing ── */
+.page-template-page-till-salu .site-main {
+  padding-top: 0;
+  margin-top: 0;
+}
+.page-template-page-till-salu .objekt-sektion {
+  margin-top: 0;
+}
+
+/* ── Harmonisera alla page-heroes ── */
+.till-salu-hero,
+.om-hero,
+.kontakt-hero {
+  height: 380px !important;
+  padding: 0 !important;
+  min-height: unset !important;
+}
+.till-salu-hero-overlay,
+.om-hero-overlay,
+.kontakt-hero-overlay {
+  background: rgba(0,0,0,0.45) !important;
+}
+.till-salu-hero h1,
+.om-hero h1,
+.kontakt-hero h1 {
+  font-size: clamp(32px, 4vw, 52px) !important;
+}
+
+.till-salu-hero,
+.om-hero,
+.kontakt-hero {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.till-salu-hero-inner,
+.om-hero-inner,
+.kontakt-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }

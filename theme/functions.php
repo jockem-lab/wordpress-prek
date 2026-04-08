@@ -121,3 +121,142 @@ function prek_spara_objekt_meta( $post_id ) {
   if ( isset( $_POST['status'] ) ) update_post_meta( $post_id, 'status', sanitize_text_field( $_POST['status'] ) );
 }
 add_action( 'save_post', 'prek_spara_objekt_meta' );
+// ACF-fältgrupp för Om oss-sidan
+add_action('acf/init', function() {
+  if ( ! function_exists('acf_add_local_field_group') ) return;
+
+  acf_add_local_field_group(array(
+    'key'    => 'group_om_oss',
+    'title'  => 'Om oss – innehåll',
+    'fields' => array(
+
+      // Hero
+      array(
+        'key'   => 'field_om_hero_bild',
+        'label' => 'Hero-bild',
+        'name'  => 'om_hero_bild',
+        'type'  => 'image',
+        'return_format' => 'url',
+      ),
+      array(
+        'key'   => 'field_om_hero_rubrik',
+        'label' => 'Hero-rubrik',
+        'name'  => 'om_hero_rubrik',
+        'type'  => 'text',
+      ),
+
+      // Intro
+      array(
+        'key'   => 'field_om_intro_text',
+        'label' => 'Intro-text',
+        'name'  => 'om_intro_text',
+        'type'  => 'wysiwyg',
+        'toolbar' => 'basic',
+      ),
+
+      // Fakta
+      array(
+        'key'   => 'field_om_fakta_1_tal',
+        'label' => 'Fakta 1 – tal',
+        'name'  => 'om_fakta_1_tal',
+        'type'  => 'text',
+        'default_value' => '2001',
+      ),
+      array(
+        'key'   => 'field_om_fakta_1_label',
+        'label' => 'Fakta 1 – etikett',
+        'name'  => 'om_fakta_1_label',
+        'type'  => 'text',
+        'default_value' => 'Grundat',
+      ),
+      array(
+        'key'   => 'field_om_fakta_2_tal',
+        'label' => 'Fakta 2 – tal',
+        'name'  => 'om_fakta_2_tal',
+        'type'  => 'text',
+        'default_value' => '500+',
+      ),
+      array(
+        'key'   => 'field_om_fakta_2_label',
+        'label' => 'Fakta 2 – etikett',
+        'name'  => 'om_fakta_2_label',
+        'type'  => 'text',
+        'default_value' => 'Förmedlade hem',
+      ),
+      array(
+        'key'   => 'field_om_fakta_3_tal',
+        'label' => 'Fakta 3 – tal',
+        'name'  => 'om_fakta_3_tal',
+        'type'  => 'text',
+        'default_value' => '4.9',
+      ),
+      array(
+        'key'   => 'field_om_fakta_3_label',
+        'label' => 'Fakta 3 – etikett',
+        'name'  => 'om_fakta_3_label',
+        'type'  => 'text',
+        'default_value' => 'Kundbetyg',
+      ),
+
+      // Värderingar
+      array(
+        'key'   => 'field_om_varden_rubrik',
+        'label' => 'Värderingar – rubrik',
+        'name'  => 'om_varden_rubrik',
+        'type'  => 'text',
+        'default_value' => 'Vad vi står för',
+      ),
+      array(
+        'key'   => 'field_om_varden_1_titel',
+        'label' => 'Värdering 1 – titel',
+        'name'  => 'om_varden_1_titel',
+        'type'  => 'text',
+        'default_value' => 'Ärlighet',
+      ),
+      array(
+        'key'   => 'field_om_varden_1_text',
+        'label' => 'Värdering 1 – text',
+        'name'  => 'om_varden_1_text',
+        'type'  => 'textarea',
+        'default_value' => 'Vi är alltid transparenta i vår rådgivning och sätter alltid kundens bästa i centrum.',
+      ),
+      array(
+        'key'   => 'field_om_varden_2_titel',
+        'label' => 'Värdering 2 – titel',
+        'name'  => 'om_varden_2_titel',
+        'type'  => 'text',
+        'default_value' => 'Lokalkännedom',
+      ),
+      array(
+        'key'   => 'field_om_varden_2_text',
+        'label' => 'Värdering 2 – text',
+        'name'  => 'om_varden_2_text',
+        'type'  => 'textarea',
+        'default_value' => 'Med över 20 års erfarenhet i Linköping känner vi marknaden utan och inom.',
+      ),
+      array(
+        'key'   => 'field_om_varden_3_titel',
+        'label' => 'Värdering 3 – titel',
+        'name'  => 'om_varden_3_titel',
+        'type'  => 'text',
+        'default_value' => 'Engagemang',
+      ),
+      array(
+        'key'   => 'field_om_varden_3_text',
+        'label' => 'Värdering 3 – text',
+        'name'  => 'om_varden_3_text',
+        'type'  => 'textarea',
+        'default_value' => 'Vi bryr oss genuint om varje kund och varje affär – stor som liten.',
+      ),
+    ),
+    'location' => array(
+      array(
+        array(
+          'param'    => 'page_template',
+          'operator' => '==',
+          'value'    => 'page-om-oss.php',
+        ),
+      ),
+    ),
+  ));
+});
