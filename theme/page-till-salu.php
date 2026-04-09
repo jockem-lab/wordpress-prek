@@ -3,7 +3,9 @@
  * Template Name: Till salu
  */
 get_header();
-$ts_hero_rubrik = get_field('ts_hero_rubrik') ?: 'Hem till salu';
+$ts_hero_rubrik      = get_field('ts_hero_rubrik') ?: 'Hem till salu';
+$ts_hero_underrubrik = get_field('ts_hero_underrubrik') ?: '';
+$ts_intro_text       = get_field('ts_intro_text') ?: '';
 ?>
 
 <main id="primary" class="site-main">
@@ -18,12 +20,18 @@ $ts_hero_rubrik = get_field('ts_hero_rubrik') ?: 'Hem till salu';
     <div class="till-salu-hero-overlay"></div>
     <div class="till-salu-hero-inner">
       <h1><?php echo esc_html($ts_hero_rubrik); ?></h1>
+      <?php if ( $ts_hero_underrubrik ) : ?>
+        <p class="hero-undersida-sub"><?php echo esc_html($ts_hero_underrubrik); ?></p>
+      <?php endif; ?>
     </div>
   </div>
 
   <section class="objekt-sektion">
     <div class="objekt-inner">
 
+      <?php if ( $ts_intro_text ) : ?>
+        <p class="objekt-intro-text"><?php echo esc_html($ts_intro_text); ?></p>
+      <?php endif; ?>
       <div class="objekt-filter">
         <div class="filter-tabs">
           <button class="filter-tab active" data-status="alla">Alla</button>

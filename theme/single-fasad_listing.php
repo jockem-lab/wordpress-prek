@@ -217,8 +217,13 @@
           <?php endif; ?>
           <h3><?php echo esc_html($maklare->firstname . ' ' . $maklare->lastname); ?></h3>
           <p class="maklare-titel"><?php echo esc_html($maklare->title ?? ''); ?></p>
-          <?php if ( isset($maklare->cellphone) && $maklare->cellphone ) : ?>
-            <p><a href="tel:<?php echo esc_attr($maklare->cellphone); ?>"><?php echo esc_html($maklare->cellphoneString ?? $maklare->cellphone); ?></a></p>
+          <?php if ( isset($maklare->cellphone) && $maklare->cellphone ) :
+            $tel_display = isset($maklare->cellphoneString) && $maklare->cellphoneString ? $maklare->cellphoneString : $maklare->cellphone;
+            $tel_display = preg_replace('/^\++/', '+', $tel_display);
+            $tel_raw = $maklare->cellphone;
+            $tel_href = '+' . ltrim($tel_raw, '+');
+          ?>
+            <p><a href="tel:<?php echo esc_attr($tel_href); ?>"><?php echo esc_html($tel_display); ?></a></p>
           <?php endif; ?>
           <?php if ( isset($maklare->email) && $maklare->email ) : ?>
             <p><a href="mailto:<?php echo esc_attr($maklare->email); ?>"><?php echo esc_html($maklare->email); ?></a></p>

@@ -328,6 +328,8 @@ add_action('acf/init', function() {
     'title'  => 'Till salu – innehåll',
     'fields' => array(
       array( 'key' => 'field_ts_hero_rubrik', 'label' => 'Hero-rubrik', 'name' => 'ts_hero_rubrik', 'type' => 'text', 'default_value' => 'Hem till salu' ),
+      array( 'key' => 'field_ts_hero_underrubrik', 'label' => 'Hero-underrubrik', 'name' => 'ts_hero_underrubrik', 'type' => 'text', 'default_value' => '' ),
+      array( 'key' => 'field_ts_intro_text', 'label' => 'Intro-text (ovanför objektgridet)', 'name' => 'ts_intro_text', 'type' => 'textarea', 'default_value' => '' ),
     ),
     'location' => array(
       array(

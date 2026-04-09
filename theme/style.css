@@ -1703,3 +1703,47 @@ a.btn-secondary:hover { border-color: #fff; }
     grid-template-columns: 1fr !important;
   }
 }
+
+.hero-undersida-sub {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  margin-top: 8px;
+  font-family: var(--font-body);
+}
+.objekt-intro-text {
+  font-size: 16px;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+/* ── Mäklarkort – förbättrad stil ── */
+.objekt-detalj-kontakt {
+  text-align: center;
+}
+.objekt-detalj-kontakt .maklare-bild {
+  margin: 0 auto 16px;
+}
+.objekt-detalj-kontakt h3 {
+  margin-bottom: 4px;
+}
+.objekt-detalj-kontakt p,
+.objekt-detalj-kontakt a {
+  color: var(--text-dark) !important;
+  text-decoration: none;
+  font-size: 14px;
+}
+.objekt-detalj-kontakt a:hover {
+  color: var(--accent) !important;
+}
+.objekt-detalj-kontakt .btn-primary {
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  display: block;
+  background: var(--text-dark) !important;
+  color: #fff !important;
+}
+.objekt-detalj-kontakt .btn-primary:hover {
+  background: var(--accent) !important;
+}
