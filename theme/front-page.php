@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+get_header();
+$hero_rubrik   = get_field('start_hero_rubrik') ?: 'Vi hittar rätt hem för dig';
+$hero_text     = get_field('start_hero_text') ?: 'Erfarna mäklare med djup lokalkännedom. Vi guidar dig genom hela processen – från första visning till nyckelöverlämning.';
+$boka_rubrik   = get_field('start_boka_rubrik') ?: 'Boka ett förutsättningslöst möte';
+$boka_eyebrow  = get_field('start_boka_eyebrow') ?: 'Kostnadsfri värdering';
+$boka_text     = get_field('start_boka_text') ?: 'Fyll i dina uppgifter så hör vi av oss inom 24 timmar.';
+?>
 
 <main id="primary" class="site-main">
 
@@ -30,8 +37,14 @@
         'posts_per_page' => 6,
         'post_status'    => 'publish',
         'meta_query'     => array(
+          'relation' => 'AND',
           array(
             'key'     => '_fasad_sold',
+            'value'   => '1',
+            'compare' => '!=',
+          ),
+          array(
+            'key'     => '_fasad_minilist',
             'value'   => '1',
             'compare' => '!=',
           ),
@@ -110,9 +123,9 @@
 <section class="boka-sektion">
   <div class="boka-inner">
     <div class="boka-text">
-      <p class="boka-eyebrow">Kostnadsfri värdering</p>
-      <h2>Boka ett förutsättningslöst möte</h2>
-      <p>Vi träffar dig gärna för ett kostnadsfritt möte. Vi gör en värdering av din bostad och ger dig konkret rådgivning inför en försäljning – utan förpliktelser.</p>
+      <p class="boka-eyebrow"><?php echo esc_html($boka_eyebrow); ?></p>
+      <h2><?php echo esc_html($boka_rubrik); ?></h2>
+      <p><?php echo esc_html($boka_text); ?></p>
     </div>
     <form class="boka-form">
       <div class="boka-form-rad">

@@ -2,7 +2,9 @@
 /*
  * Template Name: Till salu
  */
-get_header(); ?>
+get_header();
+$ts_hero_rubrik = get_field('ts_hero_rubrik') ?: 'Hem till salu';
+?>
 
 <main id="primary" class="site-main">
 
@@ -15,7 +17,7 @@ get_header(); ?>
       </div>');">
     <div class="till-salu-hero-overlay"></div>
     <div class="till-salu-hero-inner">
-      <h1>Hem till salu</h1>
+      <h1><?php echo esc_html($ts_hero_rubrik); ?></h1>
     </div>
   </div>
 
@@ -56,9 +58,15 @@ get_header(); ?>
           'posts_per_page' => 50,
           'post_status'    => 'publish',
           'meta_query'     => array(
+            'relation' => 'AND',
             array(
               'key'   => '_fasad_archived',
               'value' => '0',
+            ),
+            array(
+              'key'     => '_fasad_minilist',
+              'value'   => '1',
+              'compare' => '!=',
             ),
           ),
         ) );

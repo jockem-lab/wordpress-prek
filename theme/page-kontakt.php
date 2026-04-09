@@ -2,7 +2,16 @@
 /*
  * Template Name: Kontakt
  */
-get_header(); ?>
+get_header();
+$kontakt_hero_rubrik = get_field('kontakt_hero_rubrik') ?: 'Hör av dig till oss';
+$kontakt_adress      = get_field('kontakt_adress') ?: 'Storgatan 1';
+$kontakt_postnr      = get_field('kontakt_postnr') ?: '582 24 Linköping';
+$kontakt_telefon     = get_field('kontakt_telefon') ?: '013-00 00 00';
+$kontakt_email       = get_field('kontakt_email') ?: 'info@maklare.se';
+$kontakt_oppettider  = get_field('kontakt_oppettider') ?: "Måndag–fredag: 09–17
+Lördag: 10–14
+Söndag: Stängt";
+?>
 
 <main id="primary" class="site-main">
 
@@ -16,7 +25,7 @@ get_header(); ?>
       </div>');">
     <div class="kontakt-hero-overlay"></div>
     <div class="kontakt-hero-inner">
-<h1>Hör av dig till oss</h1>
+<h1><?php echo esc_html($kontakt_hero_rubrik); ?></h1>
     </div>
   </div>
 
@@ -28,19 +37,19 @@ get_header(); ?>
       <div class="kontakt-info">
         <div class="kontakt-info-block">
           <p class="kontakt-info-label">Adress</p>
-          <p>Storgatan 1<br>582 24 Linköping</p>
+          <p><?php echo esc_html($kontakt_adress); ?><br><?php echo esc_html($kontakt_postnr); ?></p>
         </div>
         <div class="kontakt-info-block">
           <p class="kontakt-info-label">Telefon</p>
-          <p><a href="tel:013000000">013-00 00 00</a></p>
+          <p><a href="tel:<?php echo esc_attr(preg_replace('/[^0-9]/', '', $kontakt_telefon)); ?>"><?php echo esc_html($kontakt_telefon); ?></a></p>
         </div>
         <div class="kontakt-info-block">
           <p class="kontakt-info-label">E-post</p>
-          <p><a href="mailto:info@maklare.se">info@maklare.se</a></p>
+          <p><a href="mailto:<?php echo esc_attr($kontakt_email); ?>"><?php echo esc_html($kontakt_email); ?></a></p>
         </div>
         <div class="kontakt-info-block">
           <p class="kontakt-info-label">Öppettider</p>
-          <p>Måndag–fredag: 09–17<br>Lördag: 10–14<br>Söndag: Stängt</p>
+          <p><?php echo nl2br(esc_html($kontakt_oppettider)); ?></p>
         </div>
       </div>
 

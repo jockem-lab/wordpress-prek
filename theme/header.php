@@ -37,10 +37,20 @@
         <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'kontakt' ) ) ); ?>">Kontakt</a>
       </nav>
 
-      <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+      <button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
     </div>
   </header>
+
+  <!-- Mobil overlay-meny -->
+  <div class="mobile-menu-overlay" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu-nav">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Hem</a>
+      <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'till-salu' ) ) ); ?>">Till salu</a>
+      <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'om-oss' ) ) ); ?>">Om oss</a>
+      <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'kontakt' ) ) ); ?>">Kontakt</a>
+    </nav>
+  </div>
   <div id="content" class="site-content">

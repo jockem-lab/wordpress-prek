@@ -302,3 +302,96 @@ add_action('template_redirect', function() {
         }
     }
 }, 999);
+
+// ACF-fältgrupp för Startsidan
+add_action('acf/init', function() {
+  if ( ! function_exists('acf_add_local_field_group') ) return;
+  acf_add_local_field_group(array(
+    'key'    => 'group_startsida',
+    'title'  => 'Startsida – innehåll',
+    'fields' => array(
+      array( 'key' => 'field_start_hero_rubrik', 'label' => 'Hero-rubrik', 'name' => 'start_hero_rubrik', 'type' => 'text', 'default_value' => 'Vi hittar rätt hem för dig' ),
+      array( 'key' => 'field_start_hero_text', 'label' => 'Hero-undertext', 'name' => 'start_hero_text', 'type' => 'textarea', 'default_value' => 'Erfarna mäklare med djup lokalkännedom. Vi guidar dig genom hela processen – från första visning till nyckelöverlämning.' ),
+      array( 'key' => 'field_start_boka_rubrik', 'label' => 'Boka möte – rubrik', 'name' => 'start_boka_rubrik', 'type' => 'text', 'default_value' => 'Boka ett förutsättningslöst möte' ),
+      array( 'key' => 'field_start_boka_eyebrow', 'label' => 'Boka möte – eyebrow', 'name' => 'start_boka_eyebrow', 'type' => 'text', 'default_value' => 'Kostnadsfri värdering' ),
+      array( 'key' => 'field_start_boka_text', 'label' => 'Boka möte – text', 'name' => 'start_boka_text', 'type' => 'textarea', 'default_value' => 'Fyll i dina uppgifter så hör vi av oss inom 24 timmar.' ),
+    ),
+    'location' => array( array( array( 'param' => 'page_type', 'operator' => '==', 'value' => 'front_page' ) ) ),
+  ));
+});
+
+// ACF-fältgrupp för Till salu-sidan
+add_action('acf/init', function() {
+  if ( ! function_exists('acf_add_local_field_group') ) return;
+  acf_add_local_field_group(array(
+    'key'    => 'group_till_salu',
+    'title'  => 'Till salu – innehåll',
+    'fields' => array(
+      array( 'key' => 'field_ts_hero_rubrik', 'label' => 'Hero-rubrik', 'name' => 'ts_hero_rubrik', 'type' => 'text', 'default_value' => 'Hem till salu' ),
+    ),
+    'location' => array(
+      array(
+        array(
+          'param'    => 'page_template',
+          'operator' => '==',
+          'value'    => 'page-till-salu.php',
+        ),
+      ),
+    ),
+  ));
+});
+
+// ACF-fältgrupp för Kontaktsidan
+add_action('acf/init', function() {
+  if ( ! function_exists('acf_add_local_field_group') ) return;
+  acf_add_local_field_group(array(
+    'key'    => 'group_kontakt',
+    'title'  => 'Kontakt – innehåll',
+    'fields' => array(
+      array( 'key' => 'field_kontakt_hero_rubrik', 'label' => 'Hero-rubrik', 'name' => 'kontakt_hero_rubrik', 'type' => 'text', 'default_value' => 'Kontakta oss' ),
+      array( 'key' => 'field_kontakt_adress', 'label' => 'Adress', 'name' => 'kontakt_adress', 'type' => 'text', 'default_value' => 'Storgatan 1' ),
+      array( 'key' => 'field_kontakt_postnr', 'label' => 'Postnummer och ort', 'name' => 'kontakt_postnr', 'type' => 'text', 'default_value' => '582 24 Linköping' ),
+      array( 'key' => 'field_kontakt_telefon', 'label' => 'Telefon', 'name' => 'kontakt_telefon', 'type' => 'text', 'default_value' => '013-00 00 00' ),
+      array( 'key' => 'field_kontakt_email', 'label' => 'E-post', 'name' => 'kontakt_email', 'type' => 'email', 'default_value' => 'info@maklare.se' ),
+      array( 'key' => 'field_kontakt_oppettider', 'label' => 'Öppettider', 'name' => 'kontakt_oppettider', 'type' => 'textarea', 'default_value' => 'Måndag–fredag: 09.00–17.00' ),
+    ),
+    'location' => array( array( array( 'param' => 'page_template', 'operator' => '==', 'value' => 'page-kontakt.php' ) ) ),
+  ));
+});
+
+// ACF-fältgrupp för Footer (globalt)
+add_action('acf/init', function() {
+  if ( ! function_exists('acf_add_local_field_group') ) return;
+  acf_add_local_field_group(array(
+    'key'    => 'group_footer',
+    'title'  => 'Footer – innehåll',
+    'fields' => array(
+      array( 'key' => 'field_footer_tagline', 'label' => 'Tagline', 'name' => 'footer_tagline', 'type' => 'text', 'default_value' => 'Vi hittar rätt hem för dig.' ),
+      array( 'key' => 'field_footer_adress', 'label' => 'Adress', 'name' => 'footer_adress', 'type' => 'text', 'default_value' => 'Storgatan 1' ),
+      array( 'key' => 'field_footer_postnr', 'label' => 'Postnummer och ort', 'name' => 'footer_postnr', 'type' => 'text', 'default_value' => '582 24 Linköping' ),
+      array( 'key' => 'field_footer_telefon', 'label' => 'Telefon', 'name' => 'footer_telefon', 'type' => 'text', 'default_value' => '013-00 00 00' ),
+      array( 'key' => 'field_footer_email', 'label' => 'E-post', 'name' => 'footer_email', 'type' => 'email', 'default_value' => 'info@maklare.se' ),
+    ),
+    'location' => array( array( array( 'param' => 'options_page', 'operator' => '==', 'value' => 'acf-options-footer' ) ) ),
+  ));
+});
+
+// ACF Options-sida för globala inställningar
+add_action('acf/init', function() {
+  if ( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+      'page_title'  => 'Temainställningar',
+      'menu_title'  => 'Temainställningar',
+      'menu_slug'   => 'tema-installningar',
+      'capability'  => 'manage_options',
+      'redirect'    => false,
+    ));
+    acf_add_options_sub_page(array(
+      'page_title'  => 'Footer',
+      'menu_title'  => 'Footer',
+      'parent_slug' => 'tema-installningar',
+      'capability'  => 'manage_options',
+      'slug'        => 'acf-options-footer',
+    ));
+  }
+});
