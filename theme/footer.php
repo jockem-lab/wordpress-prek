@@ -23,11 +23,12 @@ $footer_email   = get_field('footer_email', 'option') ?: 'info@maklare.se';
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
-      <?php wp_nav_menu( array(
-        'theme_location' => 'menu-1',
-        'container'      => false,
-        'depth'          => 1,
-      ) ); ?>
+      <ul>
+        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Hem</a></li>
+        <li><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'till-salu' ) ) ); ?>">Till salu</a></li>
+        <li><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'om-oss' ) ) ); ?>">Om oss</a></li>
+        <li><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'kontakt' ) ) ); ?>">Kontakt</a></li>
+      </ul>
     </div>
     <div class="footer-col">
       <h4>Kontakt</h4>
