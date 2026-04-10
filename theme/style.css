@@ -1745,5 +1745,6 @@ a.btn-secondary:hover { border-color: #fff; }
   color: #fff !important;
 }
 .objekt-detalj-kontakt .btn-primary:hover {
-  background: var(--accent) !important;
+  background: var(--accent-dark) !important;
+  color: #fff !important;
 }
